@@ -1,0 +1,54 @@
+s
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" id='themeColor' content="#ffffff">
+    <meta name="description" content="flights information" />
+    <meta property="og:title" content="traveltek" />
+    <meta property="og:description" content="flights information" />
+    <meta property="og:site_name" content="traveltek" />
+    <title>traveltek</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+    <h1>sdf</h1>
+
+    <ul id='stats-list'>
+     
+    </ul>
+
+
+    <script>
+        fetch('/api')
+            .then(function (res) {
+                const stats = res.body;
+                const statsList = document.getElementById('stats-list');
+
+                stats.forEach(function(stat){
+                    var statLi = document.createElement('li');
+                    var title = document.createElement('h5');
+                    var val = document.createElement('span');
+                    title.append(document.createTextNode(stat.title));
+                    val.append(document.createTextNode(stat.value));
+                    statLi.append(title,val);
+                    statsList.append(statLi)
+                })
+
+                console.log(res.body)
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+
+
+    </script>
+
+</body>
+
+</html>
