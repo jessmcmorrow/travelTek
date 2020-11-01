@@ -56,7 +56,8 @@ const stat4 = (flights) => {
 }
 
 const stat5 = (flights) => {
-    return 'stat 5';
+    const businessClassFlights = flights.filter(x => x.class == "Business");
+    return `${businessClassFlights.length}`;
 }
 
 module.exports = { stat1, stat2, stat3, stat4, stat5 };
